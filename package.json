@@ -1,0 +1,12 @@
+{
+  "name": "svelte-refresh-indicator",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Johnny Hauser <johnnyhauser@gmail.com>",
+  "license": "CC0-1.0"
+}
