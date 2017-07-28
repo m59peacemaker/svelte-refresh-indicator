@@ -6,3 +6,5 @@ node_modules
 /platforms
 *.log
 *.tmp
+build.js
+package-lock.json

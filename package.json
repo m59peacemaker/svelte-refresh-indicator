@@ -9,12 +9,15 @@
     ]
   },
   "scripts": {
-    "test": "budo test.js --live"
+    "test": "budo test.js --live",
+    "build": "browserify test.js -o build.js"
   },
   "keywords": [],
   "author": "Johnny Hauser <johnnyhauser@gmail.com>",
   "license": "CC0-1.0",
   "devDependencies": {
+    "browserify": "14.4.0",
     "sveltify": "^1.1.0"
-  }
+  },
+  "dependencies": {}
 }
