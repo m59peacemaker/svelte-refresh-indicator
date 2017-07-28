@@ -3,10 +3,18 @@
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
+  "browserify": {
+    "transform": [
+      "sveltify"
+    ]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "budo test.js --live"
   },
   "keywords": [],
   "author": "Johnny Hauser <johnnyhauser@gmail.com>",
-  "license": "CC0-1.0"
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "sveltify": "^1.1.0"
+  }
 }
