@@ -10,7 +10,7 @@
   },
   "scripts": {
     "test": "budo test.js --live",
-    "build": "browserify test.js -o build.js"
+    "build": "browserify test.js -o docs/build.js"
   },
   "keywords": [],
   "author": "Johnny Hauser <johnnyhauser@gmail.com>",
