@@ -240,23 +240,30 @@ module.exports = Indicator;
 'use strict';
 
 function recompute ( state, newState, oldState, isInitial ) {
+	if ( isInitial || ( 'animated' in newState && differs( state.animated, oldState.animated ) ) ) {
+		state.animateClass = newState.animateClass = template.computed.animateClass( state.animated );
+	}
+
 	if ( isInitial || ( 'color' in newState && differs( state.color, oldState.color ) ) ) {
 		state.halfCircleStyles = newState.halfCircleStyles = template.computed.halfCircleStyles( state.color );
 	}
 }
 
 var template = (function () {
+// TODO: there is a 1px space between the two sides that shouldn't be there :/
   const makeBorderRules = (color, side) =>
     `border-top-color: ${color}; border-${side}-color: ${color};`
 
   return {
     data () {
       return {
+        animated: true,
         color: '#2196f3'
       }
     },
 
     computed: {
+      animateClass: animated => animated ? 'animated' : '',
       halfCircleStyles: color => {
         return {
           left: makeBorderRules(color, 'left'),
@@ -269,13 +276,13 @@ var template = (function () {
 
 function add_css () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-1215916114-style';
-	style.textContent = "\n\n@keyframes svelte-1215916114-outer-rotate {\n  100% { transform: rotate(360deg); }\n}\n\n@keyframes svelte-1215916114-inner-rotate {\n  12.5% { transform: rotate(135deg); }\n  25%   { transform: rotate(270deg); }\n  37.5% { transform: rotate(405deg); }\n  50%   { transform: rotate(540deg); }\n  62.5% { transform: rotate(675deg); }\n  75%   { transform: rotate(810deg); }\n  87.5% { transform: rotate(945deg); }\n  100%  { transform: rotate(1080deg); }\n}\n\n@keyframes svelte-1215916114-left-expand {\n  0%, 100% { transform: rotate(130deg); }\n  50%      { transform: rotate(-5deg); }\n}\n\n@keyframes svelte-1215916114-right-expand {\n  0%, 100% { transform: rotate(-130deg); }\n  50%      { transform: rotate(5deg); }\n}\n\n[svelte-1215916114].spinner, [svelte-1215916114] .spinner {\n  width: 100%;\n  height: 100%;\n  position: relative;\n  animation: svelte-1215916114-outer-rotate 2.91667s linear infinite;\n}\n\n[svelte-1215916114].inner-rotate, [svelte-1215916114] .inner-rotate {\n  animation: svelte-1215916114-inner-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;\n  height: 100%;\n}\n\n[svelte-1215916114].left .half-circle, [svelte-1215916114] .left .half-circle {\n  animation-name: svelte-1215916114-left-expand;\n}\n\n[svelte-1215916114].right .half-circle, [svelte-1215916114] .right .half-circle {\n  animation-name: svelte-1215916114-right-expand;\n}\n\n[svelte-1215916114].half-circle, [svelte-1215916114] .half-circle {\n  animation-duration: 1.3125s;\n  animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);\n  animation-iteration-count: infinite;\n}\n\n[svelte-1215916114].left, [svelte-1215916114] .left,\n[svelte-1215916114].right, [svelte-1215916114] .right {\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 50%;\n  overflow: hidden;\n}\n\n[svelte-1215916114].right, [svelte-1215916114] .right {\n  right: 0\n}\n\n[svelte-1215916114].half-circle, [svelte-1215916114] .half-circle {\n  height: 100%;\n  width: 200%;\n  position: absolute;\n  top: 0;\n  box-sizing: border-box;\n  border-width: 3px;\n  border-style: solid;\n  border-color: #000 #000 transparent;\n  border-radius: 50%;\n}\n\n[svelte-1215916114].left .half-circle, [svelte-1215916114] .left .half-circle {\n  border-right-color: transparent;\n}\n\n[svelte-1215916114].right .half-circle, [svelte-1215916114] .right .half-circle {\n  right: 0;\n  border-left-color: transparent;\n}\n\n";
+	style.id = 'svelte-2347202610-style';
+	style.textContent = "\n\n@keyframes svelte-2347202610-outer-rotate {\n  100% { transform: rotate(360deg); }\n}\n\n@keyframes svelte-2347202610-inner-rotate {\n  12.5% { transform: rotate(135deg); }\n  25%   { transform: rotate(270deg); }\n  37.5% { transform: rotate(405deg); }\n  50%   { transform: rotate(540deg); }\n  62.5% { transform: rotate(675deg); }\n  75%   { transform: rotate(810deg); }\n  87.5% { transform: rotate(945deg); }\n  100%  { transform: rotate(1080deg); }\n}\n\n@keyframes svelte-2347202610-left-expand {\n  0%, 100% { transform: rotate(130deg); }\n  50%      { transform: rotate(-5deg); }\n}\n\n@keyframes svelte-2347202610-right-expand {\n  0%, 100% { transform: rotate(-130deg); }\n  50%      { transform: rotate(5deg); }\n}\n\n[svelte-2347202610].spinner.animated, [svelte-2347202610] .spinner.animated {\n  animation: svelte-2347202610-outer-rotate 2.91667s linear infinite;\n}\n\n[svelte-2347202610].inner.animated, [svelte-2347202610] .inner.animated {\n  animation: svelte-2347202610-inner-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;\n}\n\n[svelte-2347202610].left .half-circle.animated, [svelte-2347202610] .left .half-circle.animated {\n  animation-name: svelte-2347202610-left-expand;\n}\n\n[svelte-2347202610].right .half-circle.animated, [svelte-2347202610] .right .half-circle.animated {\n  animation-name: svelte-2347202610-right-expand;\n}\n\n[svelte-2347202610].spinner, [svelte-2347202610] .spinner {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\n[svelte-2347202610].inner, [svelte-2347202610] .inner {\n  height: 100%;\n}\n\n[svelte-2347202610].half-circle, [svelte-2347202610] .half-circle {\n  animation-duration: 1.3125s;\n  animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);\n  animation-iteration-count: infinite;\n}\n\n[svelte-2347202610].left, [svelte-2347202610] .left,\n[svelte-2347202610].right, [svelte-2347202610] .right {\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 50%;\n  overflow: hidden;\n}\n\n[svelte-2347202610].left, [svelte-2347202610] .left {\n  /* The overflow: hidden separating the left and right caused a 1px distortion between them\n     in some browsers. This smooths it out by letting the left overlap the right by 1px\n   */\n  width: calc(50% + 1px);\n}\n\n[svelte-2347202610].right, [svelte-2347202610] .right {\n  right: 0\n}\n\n[svelte-2347202610].half-circle, [svelte-2347202610] .half-circle {\n  height: 100%;\n  width: 200%;\n  position: absolute;\n  top: 0;\n  box-sizing: border-box;\n  border-width: 3px;\n  border-style: solid;\n  border-color: #000 #000 transparent;\n  border-radius: 50%;\n}\n\n[svelte-2347202610].left .half-circle, [svelte-2347202610] .left .half-circle {\n  /* compensate the 1px overlap so that the circle remains the correct size and shape\n     see comment on .left\n   */\n  width: calc(200% - 2px);\n\n  border-right-color: transparent;\n}\n\n[svelte-2347202610].right .half-circle, [svelte-2347202610] .right .half-circle {\n  right: 0;\n  border-left-color: transparent;\n}\n\n";
 	appendNode( style, document.head );
 }
 
 function create_main_fragment ( state, component ) {
-	var div, div_1, div_2, div_3, div_3_style_value, text_1, div_4, div_5, div_5_style_value;
+	var div, div_class_value, div_1, div_1_class_value, div_2, div_3, div_3_class_value, div_3_style_value, text_1, div_4, div_5, div_5_class_value, div_5_style_value;
 
 	return {
 		create: function () {
@@ -290,14 +297,14 @@ function create_main_fragment ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-1215916114', '' );
-			div.className = "spinner";
-			div_1.className = "inner-rotate";
+			setAttribute( div, 'svelte-2347202610', '' );
+			div.className = div_class_value = "spinner " + ( state.animateClass );
+			div_1.className = div_1_class_value = "inner " + ( state.animateClass );
 			div_2.className = "left";
-			div_3.className = "half-circle";
+			div_3.className = div_3_class_value = "half-circle " + ( state.animateClass );
 			div_3.style.cssText = div_3_style_value = state.halfCircleStyles.left;
 			div_4.className = "right";
-			div_5.className = "half-circle";
+			div_5.className = div_5_class_value = "half-circle " + ( state.animateClass );
 			div_5.style.cssText = div_5_style_value = state.halfCircleStyles.right;
 		},
 
@@ -312,8 +319,24 @@ function create_main_fragment ( state, component ) {
 		},
 
 		update: function ( changed, state ) {
+			if ( div_class_value !== ( div_class_value = "spinner " + ( state.animateClass ) ) ) {
+				div.className = div_class_value;
+			}
+
+			if ( div_1_class_value !== ( div_1_class_value = "inner " + ( state.animateClass ) ) ) {
+				div_1.className = div_1_class_value;
+			}
+
+			if ( div_3_class_value !== ( div_3_class_value = "half-circle " + ( state.animateClass ) ) ) {
+				div_3.className = div_3_class_value;
+			}
+
 			if ( div_3_style_value !== ( div_3_style_value = state.halfCircleStyles.left ) ) {
 				div_3.style.cssText = div_3_style_value;
+			}
+
+			if ( div_5_class_value !== ( div_5_class_value = "half-circle " + ( state.animateClass ) ) ) {
+				div_5.className = div_5_class_value;
 			}
 
 			if ( div_5_style_value !== ( div_5_style_value = state.halfCircleStyles.right ) ) {
@@ -345,7 +368,7 @@ function Spinner ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-1215916114-style' ) ) add_css();
+	if ( !document.getElementById( 'svelte-2347202610-style' ) ) add_css();
 
 	this._fragment = create_main_fragment( this._state, this );
 
