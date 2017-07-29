@@ -10,7 +10,6 @@
 </div>
 
 <script>
-// TODO: there is a 1px space between the two sides that shouldn't be there :/
   const makeBorderRules = (color, side) =>
     `border-top-color: ${color}; border-${side}-color: ${color};`
 
@@ -105,6 +104,7 @@
 .left {
   /* The overflow: hidden separating the left and right caused a 1px distortion between them
      in some browsers. This smooths it out by letting the left overlap the right by 1px
+     The left half circle width has to be reduced by 2px to compensate this 1px overlap
    */
   width: calc(50% + 1px);
 }
