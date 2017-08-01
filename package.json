@@ -5,15 +5,11 @@
   "main": "build/Indicator.js",
   "svelte": "src/Indicator.html",
   "svelte.root": "src",
-  "browserify": {
-    "transform": [
-      "sveltify"
-    ]
-  },
   "scripts": {
     "test": "budo test.js --live",
     "build": "npm run build:main && npm run build:docs",
-    "build:main": "mkdir -p ./build && browserify src/Indicator.html > build/Indicator.js",
+    "prebuild:main": "mkdir -p ./build",
+    "build:main": "browserify -t sveltify src/Indicator.html > build/Indicator.js",
     "build:docs": "browserify src/docs.js > docs/docs.js"
   },
   "keywords": [
