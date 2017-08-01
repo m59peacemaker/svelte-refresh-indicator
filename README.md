@@ -1,5 +1,7 @@
 # svelte-refresh-indicator
 
+Material design refresh indicator.
+
 [View the demo.](https://m59peacemaker.github.io/svelte-refresh-indicator/)
 
 ![svelte-refresh-indicator](https://raw.githubusercontent.com/m59peacemaker/svelte-refresh-indicator/master/indicator.gif "svelte-refresh-indicator")

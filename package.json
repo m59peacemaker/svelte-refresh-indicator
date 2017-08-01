@@ -1,8 +1,10 @@
 {
   "name": "svelte-refresh-indicator",
   "version": "0.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Material design refresh indicator.",
+  "main": "docs/Indicator.js",
+  "svelte": "src/Indicator.html",
+  "svelte.root": "src",
   "browserify": {
     "transform": [
       "sveltify"
@@ -10,14 +12,16 @@
   },
   "scripts": {
     "test": "budo test.js --live",
-    "build": "browserify test.js -o docs/build.js"
+    "build": "npm run build:main && npm run build:docs",
+    "build:main": "browserify src/Indicator.html > docs/Indicator.js",
+    "build:docs": "browserify test.js > docs/build.js"
   },
   "keywords": [],
   "author": "Johnny Hauser <johnnyhauser@gmail.com>",
   "license": "CC0-1.0",
+  "dependencies": {},
   "devDependencies": {
     "browserify": "14.4.0",
     "sveltify": "^1.1.0"
-  },
-  "dependencies": {}
+  }
 }
