@@ -1,19 +1,46 @@
 <div class="indicator">
-  <Spinner/>
+  {{#if spinning}}
+    <div class="arrow-sync-container" style="transform: rotate({{ arrowSyncRotate }}deg);">
+      <Spinner/>
+    </div>
+  {{else}}
+    <Arrow progressRatio="{{ progressRatio }}"></Arrow>
+  {{/if}}
 </div>
 
 <script>
-//import Arrow from './arrow'
+import Arrow from './Arrow.html'
 import Spinner from './Spinner.html'
 
 export default {
+  data () {
+    return {
+      progressRatio: undefined,
+      lastProgressRatio: 0
+    }
+  },
+
+  computed: {
+    spinning: progressRatio => progressRatio === undefined,
+    arrowSyncRotate: (spinning, lastProgressRatio) => {
+      const ratio = !spinning ? 0 : (lastProgressRatio || 0)
+      return ratio * 315
+    }
+  },
+
+  oncreate () {
+    this.observe('progressRatio', (newValue, oldValue) => this.set({ lastProgressRatio: oldValue }))
+  },
+
   components: {
+    Arrow,
     Spinner
   }
 }
 </script>
 
 <style>
+
 .indicator {
   width: 26px;
   height: 26px;
@@ -22,26 +49,9 @@ export default {
   background-color: #fff;
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 13px 0 rgba(0, 0, 0, 0.2);
 }
-  /*position: fixed;
-  top: 0;
-  z-index: 10001;
-  perspective: 1000;
-  backface-visibility: hidden;
-  transform: scale(1);
-  overflow: hidden;
+
+.arrow-sync-container {
+  height: 100%;
 }
 
-.refresh-main-animat {
-  transition: all 0.43s cubic-bezier(.08,.55,.81,1.8)
-  //transition: box-shadow 0.38s cubic-bezier(0.4, 0, 0.2, 1)
-}
-
-.refresh-nav {
-  transform: scale(1);
-}
-.refresh-noshow {
-  opacity: 0;
-  transform: scale(0.01) !important;
-  transition: all 0.25s ease-in-out !important;
-}*/
 </style>

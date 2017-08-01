@@ -1,52 +1,48 @@
+<div class="arrow" style="transform: rotate(90deg); opacity: {{ progressRatio }};">
+  <ArrowSide which="left" color="{{ color }}" rotate="{{ rotate }}"/>
+  <ArrowSide which="right" color="{{ color }}" rotate="{{ rotate }}"/>
+  {{#if progressRatio > 0.3 }}
+    <div class="arrow-head-rotate" style="transform: rotate({{ rotate - 136 }}deg);">
+      <ArrowHead sizeRatio="{{ (progressRatio - 0.3) / 0.7 }}"/>
+    </div>
+  {{/if}}
+</div>
+
+<script>
+import ArrowSide from './ArrowSide.html'
+import ArrowHead from './ArrowHead.html'
+
+const COMPLETE_ROTATION = 270
+
+export default {
+  data () {
+    return {
+      color: '#2196f3',
+      progressRatio: 1
+    }
+  },
+
+  computed: {
+    rotate: progressRatio => COMPLETE_ROTATION * progressRatio
+  },
+
+  components: {
+    ArrowSide,
+    ArrowHead
+  }
+}
+</script>
+
 <style>
 
-.arrow-wrapper {
-  transition: all 0.2s ease;
-}
-
-.arrow-main {
-  position: absolute;
-  top: 0;
-  box-sizing: border-box;
-  border-width: 3px;
-  border-style: solid;
-  border-color: #000 #000 transparent;
-  border-radius: 50%;
-}
-.arrow-main {
-  margin-top: 10px;
-  transform: rotate(-37deg);
-  display: none;
-}
-
-.arrow-main:before {
-  content: '';
-  display: block;
+.arrow {
   position: relative;
-  top: 14px;
-  left: 0px;
-  width: 0;
-  height: 0;
-  border-width: 6px 6px;
-  border-style: solid;
-  transform: rotate(-56deg);
+  height: 100%;
 }
 
-.blue-theme .arrow-main {
-  border-color: #2196f3 #2196f3 rgba(0,0,0,0);
-}
-.blue-theme .arrow-main:before {
-  border-color: #2196f3 #fff #fff #fff;
-}
-.blue-theme .spinner-main .spinner-left .half-circle,
-.blue-theme .spinner-main .spinner-right .half-circle {
-  border-top-color: #2196f3;
-}
-.blue-theme .spinner-main .spinner-left .half-circle {
-  border-left-color: #2196f3;
-}
-.blue-theme .spinner-main .spinner-right .half-circle {
-  border-right-color: #2196f3;
+.arrow-head-rotate {
+  height: 100%;
+  width: 100%;
 }
 
 </style>

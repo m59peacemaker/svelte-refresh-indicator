@@ -1,0 +1,100 @@
+<div class="side {{ which }}">
+  <div
+    class="half-circle {{ animated ? 'animated' : '' }}"
+    style="border-color: {{ borderColor }};"
+  ></div>
+</div>
+
+<script>
+export default {
+  data () {
+    return {
+      which: 'left',
+      color: '#2196f3',
+      animated: true
+    }
+  },
+
+  computed: {
+    borderColor: (which, color) => {
+      const colorIf = side => which === side ? color : 'transparent'
+      return `${color} ${colorIf('right')} transparent ${colorIf('left')}`
+    }
+  }
+}
+
+</script>
+
+<style>
+
+@keyframes left-expand {
+  0%, 100% { transform: rotate(125deg); }
+  50%      { transform: rotate(-5deg); }
+}
+
+@keyframes right-expand {
+  0%, 100% { transform: rotate(-125deg); }
+  50%      { transform: rotate(5deg); }
+}
+
+.left .half-circle.animated {
+  animation-name: left-expand;
+}
+
+.right .half-circle.animated {
+  animation-name: right-expand;
+}
+
+.half-circle {
+  animation-duration: 1.3125s;
+  animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
+  animation-iteration-count: infinite; }
+
+.left,
+.right {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+}
+
+.left {
+  /* The overflow: hidden separating the left and right caused a 1px distortion between them
+     in some browsers. This smooths it out by letting the left overlap the right by 1px
+     The left half circle width has to be reduced by 2px to compensate this 1px overlap
+   */
+  width: calc(50% + 1px);
+}
+
+.right {
+  right: 0
+}
+
+.half-circle {
+  height: 100%;
+  width: 200%;
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #000 #000 transparent #000;
+  border-radius: 50%;
+}
+
+.left .half-circle {
+  /* compensate the 1px overlap so that the circle remains the correct size and shape
+     see comment on .left
+   */
+  width: calc(200% - 2px);
+
+  border-right-color: transparent;
+}
+
+.right .half-circle {
+  right: 0;
+  border-left-color: transparent;
+}
+
+</style>

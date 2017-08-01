@@ -1,36 +1,24 @@
-<div class="spinner {{ animateClass }}">
-  <div class="inner {{ animateClass }}">
-    <div class="left">
-      <div class="half-circle {{ animateClass }}" style="{{ halfCircleStyles.left }}"></div>
-    </div>
-    <div class="right">
-      <div class="half-circle {{ animateClass }}" style="{{ halfCircleStyles.right }}"></div>
-    </div>
+<div class="spinner animated">
+  <div class="inner animated">
+    <SpinnerSide which="left" color="{{ color }}"/>
+    <SpinnerSide which="right" color="{{ color }}"/>
   </div>
 </div>
 
 <script>
-  const makeBorderRules = (color, side) =>
-    `border-top-color: ${color}; border-${side}-color: ${color};`
+import SpinnerSide from './SpinnerSide.html'
 
-  export default {
-    data () {
-      return {
-        animated: true,
-        color: '#2196f3'
-      }
-    },
-
-    computed: {
-      animateClass: animated => animated ? 'animated' : '',
-      halfCircleStyles: color => {
-        return {
-          left: makeBorderRules(color, 'left'),
-          right: makeBorderRules(color, 'right')
-        }
-      }
+export default {
+  data () {
+    return {
+      color: '#2196f3'
     }
+  },
+
+  components: {
+    SpinnerSide
   }
+}
 </script>
 
 <style>
@@ -50,30 +38,12 @@
   100%  { transform: rotate(1080deg); }
 }
 
-@keyframes left-expand {
-  0%, 100% { transform: rotate(125deg); }
-  50%      { transform: rotate(-5deg); }
-}
-
-@keyframes right-expand {
-  0%, 100% { transform: rotate(-125deg); }
-  50%      { transform: rotate(5deg); }
-}
-
 .spinner.animated {
   animation: outer-rotate 2.91667s linear infinite;
 }
 
 .inner.animated {
   animation: inner-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;
-}
-
-.left .half-circle.animated {
-  animation-name: left-expand;
-}
-
-.right .half-circle.animated {
-  animation-name: right-expand;
 }
 
 .spinner {
@@ -84,59 +54,6 @@
 
 .inner {
   height: 100%;
-}
-
-.half-circle {
-  animation-duration: 1.3125s;
-  animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
-  animation-iteration-count: infinite;
-}
-
-.left,
-.right {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  overflow: hidden;
-}
-
-.left {
-  /* The overflow: hidden separating the left and right caused a 1px distortion between them
-     in some browsers. This smooths it out by letting the left overlap the right by 1px
-     The left half circle width has to be reduced by 2px to compensate this 1px overlap
-   */
-  width: calc(50% + 1px);
-}
-
-.right {
-  right: 0
-}
-
-.half-circle {
-  height: 100%;
-  width: 200%;
-  position: absolute;
-  top: 0;
-  box-sizing: border-box;
-  border-width: 3px;
-  border-style: solid;
-  border-color: #000 #000 transparent;
-  border-radius: 50%;
-}
-
-.left .half-circle {
-  /* compensate the 1px overlap so that the circle remains the correct size and shape
-     see comment on .left
-   */
-  width: calc(200% - 2px);
-
-  border-right-color: transparent;
-}
-
-.right .half-circle {
-  right: 0;
-  border-left-color: transparent;
 }
 
 </style>
