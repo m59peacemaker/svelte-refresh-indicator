@@ -6,7 +6,6 @@
   "svelte": "src/Indicator.html",
   "svelte.root": "src",
   "scripts": {
-    "test": "budo test.js --live",
     "build": "npm run build:main && npm run build:docs",
     "prebuild:main": "mkdir -p ./build",
     "build:main": "browserify -t sveltify src/Indicator.html > build/Indicator.js",
