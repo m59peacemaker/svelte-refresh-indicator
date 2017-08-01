@@ -2,7 +2,7 @@
   "name": "svelte-refresh-indicator",
   "version": "0.0.0",
   "description": "Material design refresh indicator.",
-  "main": "docs/Indicator.js",
+  "main": "build/Indicator.js",
   "svelte": "src/Indicator.html",
   "svelte.root": "src",
   "browserify": {
@@ -13,10 +13,21 @@
   "scripts": {
     "test": "budo test.js --live",
     "build": "npm run build:main && npm run build:docs",
-    "build:main": "browserify src/Indicator.html > docs/Indicator.js",
-    "build:docs": "browserify test.js > docs/build.js"
+    "build:main": "mkdir -p ./build && browserify src/Indicator.html > build/Indicator.js",
+    "build:docs": "browserify src/docs.js > docs/docs.js"
   },
-  "keywords": [],
+  "keywords": [
+    "material",
+    "spinner",
+    "arrow",
+    "progress",
+    "pull",
+    "refresh",
+    "indicator",
+    "css",
+    "android",
+    "google"
+  ],
   "author": "Johnny Hauser <johnnyhauser@gmail.com>",
   "license": "CC0-1.0",
   "dependencies": {},

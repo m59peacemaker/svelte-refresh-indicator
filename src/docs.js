@@ -1,4 +1,4 @@
-const Indicator = require('./src/Indicator.html')
+const Indicator = require('./Indicator.html')
 
 const makeIndicator = () => {
   const div = document.createElement('div')
