@@ -25,7 +25,6 @@ export default [
     plugins: Plugins()
   },
 
-
   {
     entry: 'src/docs.js',
     dest: 'docs/docs.js',
