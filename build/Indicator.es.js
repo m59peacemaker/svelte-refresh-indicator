@@ -1,5 +1,3 @@
-'use strict';
-
 function noop() {}
 
 function assign(target) {
@@ -1139,4 +1137,4 @@ Indicator.prototype.teardown = Indicator.prototype.destroy = function destroy ( 
 	this._torndown = true;
 };
 
-module.exports = Indicator;
+export default Indicator;

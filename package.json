@@ -2,14 +2,12 @@
   "name": "svelte-refresh-indicator",
   "version": "0.0.0",
   "description": "Material design refresh indicator.",
-  "main": "build/Indicator.js",
+  "main": "build/Indicator.cjs.js",
+  "module": "build/Indicator.es.js",
   "svelte": "src/Indicator.html",
   "svelte.root": "src",
   "scripts": {
-    "build": "npm run build:main && npm run build:docs",
-    "prebuild:main": "mkdir -p ./build",
-    "build:main": "browserify -t sveltify src/Indicator.html > build/Indicator.js",
-    "build:docs": "browserify src/docs.js > docs/docs.js"
+    "build": "rollup -c"
   },
   "keywords": [
     "material",
@@ -28,6 +26,10 @@
   "dependencies": {},
   "devDependencies": {
     "browserify": "14.4.0",
+    "rollup": "^0.45.2",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-svelte": "^3.0.1",
     "sveltify": "^1.1.0"
   }
 }
