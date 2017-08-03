@@ -1,17 +1,27 @@
 <div class="side {{ which }}">
   <div
     class="half-circle {{ animated ? 'animated' : '' }}"
-    style="border-color: {{ borderColor }};"
+    style="
+      border-width: {{ borderWidth }}px;
+      border-color: {{ borderColor }};
+      animation-delay: {{ animationOffset }}s;
+    "
   ></div>
 </div>
 
 <script>
+const MAIN_DURATION = 2.91667
+const ANIMATION_DURATION = 1.3125
+const SYNC_MOD = MAIN_DURATION / ANIMATION_DURATION
+
 export default {
   data () {
     return {
       which: 'left',
+      borderWidth: 3,
       color: '#2196f3',
-      animated: true
+      animated: true,
+      initialProgress: 0
     }
   },
 
@@ -19,6 +29,10 @@ export default {
     borderColor: (which, color) => {
       const colorIf = side => which === side ? color : 'transparent'
       return `${color} ${colorIf('right')} transparent ${colorIf('left')}`
+    },
+    animationOffset: initialProgress => {
+      if (!initialProgress) { return 0 }
+      return -((ANIMATION_DURATION * 1.1) * SYNC_MOD)
     }
   }
 }

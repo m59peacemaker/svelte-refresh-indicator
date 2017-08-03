@@ -1,17 +1,44 @@
-<div class="spinner animated">
-  <div class="inner animated">
-    <SpinnerSide which="left" color="{{ color }}"/>
-    <SpinnerSide which="right" color="{{ color }}"/>
+<div class="spinner animated" style="animation-delay: {{ animationOffset }}s;">
+  <div class="inner animated" style="animation-delay: {{ animationOffset }}s;">
+    <SpinnerSide
+      which="left"
+      color="{{ color }}"
+      borderWidth="{{ borderWidth }}"
+      initialProgress="{{ initialProgress }}"
+    />
+    <SpinnerSide
+      which="right"
+      color="{{ color }}"
+      borderWidth="{{ borderWidth }}"
+      initialProgress="{{ initialProgress }}"
+    />
+
   </div>
 </div>
 
 <script>
 import SpinnerSide from './SpinnerSide.html'
 
+const ANIMATION_DURATION = 2.91667
+
 export default {
   data () {
     return {
-      color: '#2196f3'
+      size: 44,
+      color: '#2196f3',
+      // this is just serving as a boolean now, needs refactor
+        // it just makes the animations start out in a state where the circle is fully expanded
+        // and the open space is at the bottom, and is just about to collapse
+        // this makes it easy to sync using the arrow-sync-container
+      initialProgress: 0
+    }
+  },
+
+  computed: {
+    borderWidth: size => size * 0.0682,
+    animationOffset: initialProgress => {
+      if (!initialProgress) { return 0 }
+      return -(ANIMATION_DURATION * 1.1)
     }
   },
 

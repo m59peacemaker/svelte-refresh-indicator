@@ -1,7 +1,11 @@
 <div class="side {{ which }}">
   <div
     class="half-circle"
-    style="transform: rotate({{ rotateDeg }}deg); border-color: {{ borderColor }};"
+    style="
+      transform: rotate({{ rotateDeg }}deg);
+      border-width: {{ borderWidth }}px;
+      border-color: {{ borderColor }};
+    "
   ></div>
 </div>
 
@@ -17,6 +21,7 @@ export default {
   data () {
     return {
       which: 'right',
+      borderWidth: 3,
       color: '#2196f3',
       rotate: -136
     }

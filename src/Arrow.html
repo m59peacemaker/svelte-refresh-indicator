@@ -1,9 +1,19 @@
 <div class="arrow" style="transform: rotate(90deg); opacity: {{ progressRatio }};">
-  <ArrowSide which="left" color="{{ color }}" rotate="{{ rotate }}"/>
-  <ArrowSide which="right" color="{{ color }}" rotate="{{ rotate }}"/>
+  <ArrowSide
+    which="left"
+    color="{{ color }}"
+    rotate="{{ rotate }}"
+    borderWidth="{{ borderWidth }}"
+  />
+  <ArrowSide
+    which="right"
+    color="{{ color }}"
+    rotate="{{ rotate }}"
+    borderWidth="{{ borderWidth }}"
+  />
   {{#if progressRatio > 0.3 }}
     <div class="arrow-head-rotate" style="transform: rotate({{ rotate - 136 }}deg);">
-      <ArrowHead sizeRatio="{{ (progressRatio - 0.3) / 0.7 }}"/>
+      <ArrowHead size="{{ size }}" sizeRatio="{{ (progressRatio - 0.3) / 0.7 }}"/>
     </div>
   {{/if}}
 </div>
@@ -17,13 +27,15 @@ const COMPLETE_ROTATION = 270
 export default {
   data () {
     return {
+      size: 44,
       color: '#2196f3',
       progressRatio: 1
     }
   },
 
   computed: {
-    rotate: progressRatio => COMPLETE_ROTATION * progressRatio
+    rotate: progressRatio => COMPLETE_ROTATION * progressRatio,
+    borderWidth: size => size * 0.0682
   },
 
   components: {

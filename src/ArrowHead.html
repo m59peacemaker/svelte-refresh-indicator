@@ -1,47 +1,32 @@
-<span
-  class="arrow-head"
-  style="
-    border-color: {{ styles.borderColor }};
-    border-width: {{ styles.borderWidth }}px;
-    bottom: {{ styles.bottom }}px;
-  "
-></span>
+<div class="arrow-head">
+  <span
+    style="
+      border-color: {{ styles.borderColor }};
+      border-width: {{ styles.borderWidth }}px;
+    "
+  ></span>
+</div>
 
 <script>
-const MAX_BORDER_WIDTH = 6
-const MIN_BORDER_WIDTH = 2.2
-const BORDER_WIDTH_RANGE = MAX_BORDER_WIDTH - MIN_BORDER_WIDTH
-
-/*
-6 => -2
-5 => -0.5
-4 => 1
-3 => 1.9
-2.5 => 2.5
-2.2 => 2.8
-*/
-const quadPoly = x => (0.0491 * Math.pow(x, 4))
-  - (0.8084 * Math.pow(x, 3))
-  + (4.6942 * Math.pow(x, 2))
-  - (12.511 * x)
-  + 15.091
-const calcBottom = borderWidth => Math.round(quadPoly(borderWidth) * 10 + Number.EPSILON ) / 10
-
 export default {
   data () {
     return {
+      size: 44,
       color: '#2196f3',
       sizeRatio: 1
     }
   },
 
   computed: {
-    styles: (color, sizeRatio) => {
+    styles: (color, sizeRatio, size) => {
       sizeRatio = Math.min(1, sizeRatio)
-      const borderWidth = MIN_BORDER_WIDTH + (sizeRatio * BORDER_WIDTH_RANGE)
+      const maxBorderWidth = size * 0.1364
+      const minBorderWidth = size * 0.05
+      const borderWidthRange = maxBorderWidth - minBorderWidth
+      const borderWidth = minBorderWidth + (sizeRatio * borderWidthRange)
+
       return {
         borderWidth,
-        bottom: calcBottom(borderWidth),
         borderColor: `transparent ${color} transparent transparent`
       }
     }
@@ -53,15 +38,23 @@ export default {
 <style>
 
 .arrow-head {
-  display: block;
+  transform: rotate(-25deg);
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  right: 13%;
+  bottom: -50%;
+  height: 100%;
+  width: 100%;
+}
+
+span {
+  display: block;
   width: 0;
   height: 0;
   border-style: solid;
   border-width: 6px;
-  bottom: -2px;
-  right: 4px;
-  transform: rotate(-20deg);
 }
 
 </style>
