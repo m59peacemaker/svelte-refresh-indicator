@@ -1,4 +1,4 @@
-<div class="indicator">
+<div class="refresh-indicator">
   {{#if spinning}}
     <div class="arrow-sync-container" style="transform: rotate({{ arrowSyncRotate }}deg);">
       <Spinner/>
@@ -41,13 +41,13 @@ export default {
 
 <style>
 
-.indicator {
+.refresh-indicator {
   width: 26px;
   height: 26px;
   padding: 9px;
   border-radius: 50%;
   background-color: #fff;
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.15), 0 6px 13px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .arrow-sync-container {
