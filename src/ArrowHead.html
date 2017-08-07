@@ -19,6 +19,7 @@ export default {
 
   computed: {
     styles: (color, sizeRatio, size) => {
+      size = size * 1.692
       sizeRatio = Math.min(1, sizeRatio)
       const maxBorderWidth = size * 0.1364
       const minBorderWidth = size * 0.05

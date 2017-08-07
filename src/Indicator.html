@@ -1,13 +1,13 @@
 <div
-  class="refresh-indicator"
+  class="refresh-indicator {{ emphasized ? 'emphasized' : '' }}"
   style="height: {{ size }}px; width: {{ size }}px; padding: {{ padding }}px;"
 >
   {{#if spinning}}
     <div class="arrow-sync-container" style="transform: rotate({{ arrowSyncRotate }}deg);">
-      <Spinner size="{{ size }}" initialProgress="{{ lastProgressRatio }}"/>
+      <Spinner size="{{ spinnerSize }}" initialProgress="{{ lastProgressRatio }}"/>
     </div>
   {{else}}
-    <Arrow size="{{ size }}" progressRatio="{{ progressRatio }}"></Arrow>
+    <Arrow size="{{ spinnerSize }}" progressRatio="{{ progressRatio }}"></Arrow>
   {{/if}}
 </div>
 
@@ -18,7 +18,8 @@ import Spinner from './Spinner.html'
 export default {
   data () {
     return {
-      size: 44,
+      size: 38,
+      emphasized: false,
       progressRatio: undefined,
       lastProgressRatio: 0
     }
@@ -26,7 +27,8 @@ export default {
 
   computed: {
     spinning: progressRatio => progressRatio === undefined,
-    padding: size => Math.floor(size * 0.2046),
+    padding: (emphasized, size) => Math.floor(size * 0.2046) / (emphasized ? 1 : 1.7),
+    spinnerSize: (size, padding, emphasized) => size - (padding * 2),
     arrowSyncRotate: (spinning, lastProgressRatio) => {
       const ratio = !spinning ? 0 : (lastProgressRatio || 0)
       return ratio * 270
@@ -47,14 +49,18 @@ export default {
 <style>
 
 .refresh-indicator {
-  box-sizing: border-box;
   width: 44px;
   height: 44px;
+  padding: 4px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.emphasized {
   padding: 9px;
   border-radius: 50%;
   background-color: #fff;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);
-  overflow: hidden;
 }
 
 .arrow-sync-container {
