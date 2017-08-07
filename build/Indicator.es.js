@@ -153,6 +153,7 @@ return {
 
   computed: {
     styles: (color, sizeRatio, size) => {
+      size = size * 1.692;
       sizeRatio = Math.min(1, sizeRatio);
       const maxBorderWidth = size * 0.1364;
       const minBorderWidth = size * 0.05;
@@ -171,8 +172,8 @@ return {
 
 function add_css$3 () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-3591478532-style';
-	style.textContent = "\n\n[svelte-3591478532].arrow-head, [svelte-3591478532] .arrow-head {\n  transform: rotate(-25deg);\n  position: absolute;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  right: 13%;\n  bottom: -50%;\n  height: 100%;\n  width: 100%;\n}\n\nspan[svelte-3591478532], [svelte-3591478532] span {\n  display: block;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  border-width: 6px;\n}\n\n";
+	style.id = 'svelte-1131188657-style';
+	style.textContent = "\n\n[svelte-1131188657].arrow-head, [svelte-1131188657] .arrow-head {\n  transform: rotate(-25deg);\n  position: absolute;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  right: 13%;\n  bottom: -50%;\n  height: 100%;\n  width: 100%;\n}\n\nspan[svelte-1131188657], [svelte-1131188657] span {\n  display: block;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  border-width: 6px;\n}\n\n";
 	appendNode( style, document.head );
 }
 
@@ -187,7 +188,7 @@ function create_main_fragment$3 ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-3591478532', '' );
+			setAttribute( div, 'svelte-1131188657', '' );
 			div.className = "arrow-head";
 			span.style.cssText = span_style_value = "\n      border-color: " + ( state.styles.borderColor ) + ";\n      border-width: " + ( state.styles.borderWidth ) + "px;\n    ";
 		},
@@ -227,7 +228,7 @@ function ArrowHead ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-3591478532-style' ) ) add_css$3();
+	if ( !document.getElementById( 'svelte-1131188657-style' ) ) add_css$3();
 
 	this._fragment = create_main_fragment$3( this._state, this );
 
@@ -419,15 +420,15 @@ return {
 
   computed: {
     rotate: progressRatio => COMPLETE_ROTATION * progressRatio,
-    borderWidth: size => size * 0.0682
+    borderWidth: size => size * 0.1154
   }
 }
 }());
 
 function add_css$1 () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-1901924645-style';
-	style.textContent = "\n\n[svelte-1901924645].arrow, [svelte-1901924645] .arrow {\n  position: relative;\n  height: 100%;\n}\n\n[svelte-1901924645].arrow-head-rotate, [svelte-1901924645] .arrow-head-rotate {\n  height: 100%;\n  width: 100%;\n}\n\n";
+	style.id = 'svelte-1100808474-style';
+	style.textContent = "\n\n[svelte-1100808474].arrow, [svelte-1100808474] .arrow {\n  position: relative;\n  height: 100%;\n}\n\n[svelte-1100808474].arrow-head-rotate, [svelte-1100808474] .arrow-head-rotate {\n  height: 100%;\n  width: 100%;\n}\n\n";
 	appendNode( style, document.head );
 }
 
@@ -468,7 +469,7 @@ function create_main_fragment$1 ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-1901924645', '' );
+			setAttribute( div, 'svelte-1100808474', '' );
 			div.className = "arrow";
 			div.style.cssText = div_style_value = "transform: rotate(90deg); opacity: " + ( state.progressRatio ) + ";";
 		},
@@ -598,7 +599,7 @@ function Arrow ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-1901924645-style' ) ) add_css$1();
+	if ( !document.getElementById( 'svelte-1100808474-style' ) ) add_css$1();
 
 	if ( !options._root ) {
 		this._oncreate = [];
@@ -810,7 +811,7 @@ return {
   },
 
   computed: {
-    borderWidth: size => size * 0.0682,
+    borderWidth: size => size * 0.1154,
     animationOffset: initialProgress => {
       if (!initialProgress) { return 0 }
       return -(ANIMATION_DURATION * 1.1)
@@ -821,8 +822,8 @@ return {
 
 function add_css$4 () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-2520639675-style';
-	style.textContent = "\n\n@keyframes svelte-2520639675-outer-rotate {\n  100% { transform: rotate(360deg); }\n}\n\n@keyframes svelte-2520639675-inner-rotate {\n  12.5% { transform: rotate(135deg); }\n  25%   { transform: rotate(270deg); }\n  37.5% { transform: rotate(405deg); }\n  50%   { transform: rotate(540deg); }\n  62.5% { transform: rotate(675deg); }\n  75%   { transform: rotate(810deg); }\n  87.5% { transform: rotate(945deg); }\n  100%  { transform: rotate(1080deg); }\n}\n\n[svelte-2520639675].spinner.animated, [svelte-2520639675] .spinner.animated {\n  animation: svelte-2520639675-outer-rotate 2.91667s linear infinite;\n}\n\n[svelte-2520639675].inner.animated, [svelte-2520639675] .inner.animated {\n  animation: svelte-2520639675-inner-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;\n}\n\n[svelte-2520639675].spinner, [svelte-2520639675] .spinner {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\n[svelte-2520639675].inner, [svelte-2520639675] .inner {\n  height: 100%;\n}\n\n";
+	style.id = 'svelte-3843873946-style';
+	style.textContent = "\n\n@keyframes svelte-3843873946-outer-rotate {\n  100% { transform: rotate(360deg); }\n}\n\n@keyframes svelte-3843873946-inner-rotate {\n  12.5% { transform: rotate(135deg); }\n  25%   { transform: rotate(270deg); }\n  37.5% { transform: rotate(405deg); }\n  50%   { transform: rotate(540deg); }\n  62.5% { transform: rotate(675deg); }\n  75%   { transform: rotate(810deg); }\n  87.5% { transform: rotate(945deg); }\n  100%  { transform: rotate(1080deg); }\n}\n\n[svelte-3843873946].spinner.animated, [svelte-3843873946] .spinner.animated {\n  animation: svelte-3843873946-outer-rotate 2.91667s linear infinite;\n}\n\n[svelte-3843873946].inner.animated, [svelte-3843873946] .inner.animated {\n  animation: svelte-3843873946-inner-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;\n}\n\n[svelte-3843873946].spinner, [svelte-3843873946] .spinner {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\n[svelte-3843873946].inner, [svelte-3843873946] .inner {\n  height: 100%;\n}\n\n";
 	appendNode( style, document.head );
 }
 
@@ -860,7 +861,7 @@ function create_main_fragment$4 ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-2520639675', '' );
+			setAttribute( div, 'svelte-3843873946', '' );
 			div.className = "spinner animated";
 			div.style.cssText = div_style_value = "animation-delay: " + ( state.animationOffset ) + "s;";
 			div_1.className = "inner animated";
@@ -928,7 +929,7 @@ function Spinner ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-2520639675-style' ) ) add_css$4();
+	if ( !document.getElementById( 'svelte-3843873946-style' ) ) add_css$4();
 
 	if ( !options._root ) {
 		this._oncreate = [];
@@ -979,8 +980,12 @@ function recompute ( state, newState, oldState, isInitial ) {
 		state.spinning = newState.spinning = template.computed.spinning( state.progressRatio );
 	}
 
-	if ( isInitial || ( 'size' in newState && differs( state.size, oldState.size ) ) ) {
-		state.padding = newState.padding = template.computed.padding( state.size );
+	if ( isInitial || ( 'emphasized' in newState && differs( state.emphasized, oldState.emphasized ) ) || ( 'size' in newState && differs( state.size, oldState.size ) ) ) {
+		state.padding = newState.padding = template.computed.padding( state.emphasized, state.size );
+	}
+
+	if ( isInitial || ( 'size' in newState && differs( state.size, oldState.size ) ) || ( 'padding' in newState && differs( state.padding, oldState.padding ) ) || ( 'emphasized' in newState && differs( state.emphasized, oldState.emphasized ) ) ) {
+		state.spinnerSize = newState.spinnerSize = template.computed.spinnerSize( state.size, state.padding, state.emphasized );
 	}
 
 	if ( isInitial || ( 'spinning' in newState && differs( state.spinning, oldState.spinning ) ) || ( 'lastProgressRatio' in newState && differs( state.lastProgressRatio, oldState.lastProgressRatio ) ) ) {
@@ -992,7 +997,8 @@ var template = (function () {
 return {
   data () {
     return {
-      size: 44,
+      size: 38,
+      emphasized: false,
       progressRatio: undefined,
       lastProgressRatio: 0
     }
@@ -1000,7 +1006,8 @@ return {
 
   computed: {
     spinning: progressRatio => progressRatio === undefined,
-    padding: size => Math.floor(size * 0.2046),
+    padding: (emphasized, size) => Math.floor(size * 0.2046) / (emphasized ? 1 : 1.7),
+    spinnerSize: (size, padding, emphasized) => size - (padding * 2),
     arrowSyncRotate: (spinning, lastProgressRatio) => {
       const ratio = !spinning ? 0 : (lastProgressRatio || 0);
       return ratio * 270
@@ -1015,13 +1022,13 @@ return {
 
 function add_css () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-944197787-style';
-	style.textContent = "\n\n[svelte-944197787].refresh-indicator, [svelte-944197787] .refresh-indicator {\n  box-sizing: border-box;\n  width: 44px;\n  height: 44px;\n  padding: 9px;\n  border-radius: 50%;\n  background-color: #fff;\n  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);\n  overflow: hidden;\n}\n\n[svelte-944197787].arrow-sync-container, [svelte-944197787] .arrow-sync-container {\n  height: 100%;\n}\n\n";
+	style.id = 'svelte-1629388837-style';
+	style.textContent = "\n\n[svelte-1629388837].refresh-indicator, [svelte-1629388837] .refresh-indicator {\n  width: 44px;\n  height: 44px;\n  padding: 4px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n\n[svelte-1629388837].emphasized, [svelte-1629388837] .emphasized {\n  padding: 9px;\n  border-radius: 50%;\n  background-color: #fff;\n  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);\n}\n\n[svelte-1629388837].arrow-sync-container, [svelte-1629388837] .arrow-sync-container {\n  height: 100%;\n}\n\n";
 	appendNode( style, document.head );
 }
 
 function create_main_fragment ( state, component ) {
-	var div, div_style_value;
+	var div, div_class_value, div_style_value;
 
 	function get_block ( state ) {
 		if ( state.spinning ) return create_if_block;
@@ -1039,8 +1046,8 @@ function create_main_fragment ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-944197787', '' );
-			div.className = "refresh-indicator";
+			setAttribute( div, 'svelte-1629388837', '' );
+			div.className = div_class_value = "refresh-indicator " + ( state.emphasized ? 'emphasized' : '' );
 			div.style.cssText = div_style_value = "height: " + ( state.size ) + "px; width: " + ( state.size ) + "px; padding: " + ( state.padding ) + "px;";
 		},
 
@@ -1050,6 +1057,10 @@ function create_main_fragment ( state, component ) {
 		},
 
 		update: function ( changed, state ) {
+			if ( div_class_value !== ( div_class_value = "refresh-indicator " + ( state.emphasized ? 'emphasized' : '' ) ) ) {
+				div.className = div_class_value;
+			}
+
 			if ( div_style_value !== ( div_style_value = "height: " + ( state.size ) + "px; width: " + ( state.size ) + "px; padding: " + ( state.padding ) + "px;" ) ) {
 				div.style.cssText = div_style_value;
 			}
@@ -1082,7 +1093,7 @@ function create_if_block ( state, component ) {
 	var spinner = new Spinner({
 		_root: component._root,
 		data: {
-			size: state.size,
+			size: state.spinnerSize,
 			initialProgress: state.lastProgressRatio
 		}
 	});
@@ -1111,7 +1122,7 @@ function create_if_block ( state, component ) {
 
 			var spinner_changes = {};
 
-			if ( 'size' in changed ) spinner_changes.size = state.size;
+			if ( 'spinnerSize' in changed ) spinner_changes.size = state.spinnerSize;
 			if ( 'lastProgressRatio' in changed ) spinner_changes.initialProgress = state.lastProgressRatio;
 
 			if ( Object.keys( spinner_changes ).length ) spinner.set( spinner_changes );
@@ -1132,7 +1143,7 @@ function create_if_block_1 ( state, component ) {
 	var arrow = new Arrow({
 		_root: component._root,
 		data: {
-			size: state.size,
+			size: state.spinnerSize,
 			progressRatio: state.progressRatio
 		}
 	});
@@ -1149,7 +1160,7 @@ function create_if_block_1 ( state, component ) {
 		update: function ( changed, state ) {
 			var arrow_changes = {};
 
-			if ( 'size' in changed ) arrow_changes.size = state.size;
+			if ( 'spinnerSize' in changed ) arrow_changes.size = state.spinnerSize;
 			if ( 'progressRatio' in changed ) arrow_changes.progressRatio = state.progressRatio;
 
 			if ( Object.keys( arrow_changes ).length ) arrow.set( arrow_changes );
@@ -1181,7 +1192,7 @@ function Indicator ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-944197787-style' ) ) add_css();
+	if ( !document.getElementById( 'svelte-1629388837-style' ) ) add_css();
 
 	var oncreate = template.oncreate.bind( this );
 
