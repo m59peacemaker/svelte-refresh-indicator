@@ -27,7 +27,7 @@ export default {
 
   computed: {
     spinning: progressRatio => progressRatio === undefined,
-    padding: (emphasized, size) => Math.floor(size * 0.2046) / (emphasized ? 1 : 1.7),
+    padding: (emphasized, size) => Math.round( (size * 0.2046) / (emphasized ? 1 : 1.7) ),
     spinnerSize: (size, padding, emphasized) => size - (padding * 2),
     arrowSyncRotate: (spinning, lastProgressRatio) => {
       const ratio = !spinning ? 0 : (lastProgressRatio || 0)

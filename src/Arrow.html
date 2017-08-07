@@ -35,7 +35,7 @@ export default {
 
   computed: {
     rotate: progressRatio => COMPLETE_ROTATION * progressRatio,
-    borderWidth: size => size * 0.1154
+    borderWidth: size => Math.round(size * 0.1154)
   },
 
   components: {

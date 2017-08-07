@@ -24,7 +24,7 @@ export default {
       const maxBorderWidth = size * 0.1364
       const minBorderWidth = size * 0.05
       const borderWidthRange = maxBorderWidth - minBorderWidth
-      const borderWidth = minBorderWidth + (sizeRatio * borderWidthRange)
+      const borderWidth = Math.round( minBorderWidth + (sizeRatio * borderWidthRange) )
 
       return {
         borderWidth,
