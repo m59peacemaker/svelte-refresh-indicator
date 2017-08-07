@@ -19,8 +19,10 @@ import RefreshIndicator from 'svelte-refresh-indicator'
 
 const indicator = new RefreshIndicator({
   target: somewhereOverTheDOMRainbow, // DOM node where the indicator will be rendered
-  emphasized: false, // false => plain spinner, true => spinner in a fancy container
-  size: 38 // the height and width of the indicator
+  data: {
+    size: 38, // the height and width of the indicator
+    emphasized: false // false => plain spinner, true => spinner in a fancy container
+  }
 })
 
 indicator.set({ progressRatio: undefined }) // regular animated spinner
