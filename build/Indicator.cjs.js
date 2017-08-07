@@ -160,7 +160,7 @@ return {
       const maxBorderWidth = size * 0.1364;
       const minBorderWidth = size * 0.05;
       const borderWidthRange = maxBorderWidth - minBorderWidth;
-      const borderWidth = minBorderWidth + (sizeRatio * borderWidthRange);
+      const borderWidth = Math.round( minBorderWidth + (sizeRatio * borderWidthRange) );
 
       return {
         borderWidth,
@@ -174,8 +174,8 @@ return {
 
 function add_css$3 () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-1131188657-style';
-	style.textContent = "\n\n[svelte-1131188657].arrow-head, [svelte-1131188657] .arrow-head {\n  transform: rotate(-25deg);\n  position: absolute;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  right: 13%;\n  bottom: -50%;\n  height: 100%;\n  width: 100%;\n}\n\nspan[svelte-1131188657], [svelte-1131188657] span {\n  display: block;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  border-width: 6px;\n}\n\n";
+	style.id = 'svelte-4267355228-style';
+	style.textContent = "\n\n[svelte-4267355228].arrow-head, [svelte-4267355228] .arrow-head {\n  transform: rotate(-25deg);\n  position: absolute;\n  display: flex;\n  align-items: center;\n  justify-content: flex-end;\n  right: 13%;\n  bottom: -50%;\n  height: 100%;\n  width: 100%;\n}\n\nspan[svelte-4267355228], [svelte-4267355228] span {\n  display: block;\n  width: 0;\n  height: 0;\n  border-style: solid;\n  border-width: 6px;\n}\n\n";
 	appendNode( style, document.head );
 }
 
@@ -190,7 +190,7 @@ function create_main_fragment$3 ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-1131188657', '' );
+			setAttribute( div, 'svelte-4267355228', '' );
 			div.className = "arrow-head";
 			span.style.cssText = span_style_value = "\n      border-color: " + ( state.styles.borderColor ) + ";\n      border-width: " + ( state.styles.borderWidth ) + "px;\n    ";
 		},
@@ -230,7 +230,7 @@ function ArrowHead ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-1131188657-style' ) ) add_css$3();
+	if ( !document.getElementById( 'svelte-4267355228-style' ) ) add_css$3();
 
 	this._fragment = create_main_fragment$3( this._state, this );
 
@@ -305,8 +305,8 @@ return {
 
 function add_css$2 () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-1381413138-style';
-	style.textContent = "\n\n[svelte-1381413138].half-circle, [svelte-1381413138] .half-circle {\n  animation-duration: 1.3125s;\n  animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);\n  animation-iteration-count: infinite; }\n\n[svelte-1381413138].left, [svelte-1381413138] .left,\n[svelte-1381413138].right, [svelte-1381413138] .right {\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 50%;\n  overflow: hidden;\n}\n\n[svelte-1381413138].left, [svelte-1381413138] .left {\n  /* The overflow: hidden separating the left and right caused a 1px distortion between them\n     in some browsers. This smooths it out by letting the left overlap the right by 1px\n     The left half circle width has to be reduced by 2px to compensate this 1px overlap\n   */\n  width: calc(50% + 1px);\n}\n\n[svelte-1381413138].right, [svelte-1381413138] .right {\n  right: 0\n}\n\n[svelte-1381413138].half-circle, [svelte-1381413138] .half-circle {\n  height: 100%;\n  width: 200%;\n  position: absolute;\n  top: 0;\n  box-sizing: border-box;\n  border-width: 3px;\n  border-style: solid;\n  border-color: #000 #000 transparent #000;\n  border-radius: 50%;\n}\n\n[svelte-1381413138].left .half-circle, [svelte-1381413138] .left .half-circle {\n  /* compensate the 1px overlap so that the circle remains the correct size and shape\n     see comment on .left\n   */\n  width: calc(200% - 2px);\n\n  border-right-color: transparent;\n}\n\n[svelte-1381413138].right .half-circle, [svelte-1381413138] .right .half-circle {\n  right: 0;\n  border-left-color: transparent;\n}\n\n";
+	style.id = 'svelte-1807189378-style';
+	style.textContent = "\n\n[svelte-1807189378].left, [svelte-1807189378] .left,\n[svelte-1807189378].right, [svelte-1807189378] .right {\n  position: absolute;\n  top: 0;\n  height: 100%;\n  width: 50%;\n  overflow: hidden;\n}\n\n[svelte-1807189378].right, [svelte-1807189378] .right {\n  right: 0\n}\n\n[svelte-1807189378].half-circle, [svelte-1807189378] .half-circle {\n  height: 100%;\n  width: 200%;\n  position: absolute;\n  top: 0;\n  box-sizing: border-box;\n  border-width: 3px;\n  border-style: solid;\n  border-color: #000 #000 transparent #000;\n  border-radius: 50%;\n}\n\n[svelte-1807189378].left .half-circle, [svelte-1807189378] .left .half-circle {\n  border-right-color: transparent;\n}\n\n[svelte-1807189378].right .half-circle, [svelte-1807189378] .right .half-circle {\n  right: 0;\n  border-left-color: transparent;\n}\n\n";
 	appendNode( style, document.head );
 }
 
@@ -321,7 +321,7 @@ function create_main_fragment$2 ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-1381413138', '' );
+			setAttribute( div, 'svelte-1807189378', '' );
 			div.className = div_class_value = "side " + ( state.which );
 			div_1.className = "half-circle";
 			div_1.style.cssText = div_1_style_value = "\n      transform: rotate(" + ( state.rotateDeg ) + "deg);\n      border-width: " + ( state.borderWidth ) + "px;\n      border-color: " + ( state.borderColor ) + ";\n    ";
@@ -366,7 +366,7 @@ function ArrowSide ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-1381413138-style' ) ) add_css$2();
+	if ( !document.getElementById( 'svelte-1807189378-style' ) ) add_css$2();
 
 	this._fragment = create_main_fragment$2( this._state, this );
 
@@ -422,15 +422,15 @@ return {
 
   computed: {
     rotate: progressRatio => COMPLETE_ROTATION * progressRatio,
-    borderWidth: size => size * 0.1154
+    borderWidth: size => Math.round(size * 0.1154)
   }
 }
 }());
 
 function add_css$1 () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-1100808474-style';
-	style.textContent = "\n\n[svelte-1100808474].arrow, [svelte-1100808474] .arrow {\n  position: relative;\n  height: 100%;\n}\n\n[svelte-1100808474].arrow-head-rotate, [svelte-1100808474] .arrow-head-rotate {\n  height: 100%;\n  width: 100%;\n}\n\n";
+	style.id = 'svelte-647709901-style';
+	style.textContent = "\n\n[svelte-647709901].arrow, [svelte-647709901] .arrow {\n  position: relative;\n  height: 100%;\n}\n\n[svelte-647709901].arrow-head-rotate, [svelte-647709901] .arrow-head-rotate {\n  height: 100%;\n  width: 100%;\n}\n\n";
 	appendNode( style, document.head );
 }
 
@@ -471,7 +471,7 @@ function create_main_fragment$1 ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-1100808474', '' );
+			setAttribute( div, 'svelte-647709901', '' );
 			div.className = "arrow";
 			div.style.cssText = div_style_value = "transform: rotate(90deg); opacity: " + ( state.progressRatio ) + ";";
 		},
@@ -601,7 +601,7 @@ function Arrow ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-1100808474-style' ) ) add_css$1();
+	if ( !document.getElementById( 'svelte-647709901-style' ) ) add_css$1();
 
 	if ( !options._root ) {
 		this._oncreate = [];
@@ -813,7 +813,7 @@ return {
   },
 
   computed: {
-    borderWidth: size => size * 0.1154,
+    borderWidth: size => Math.round(size * 0.1154),
     animationOffset: initialProgress => {
       if (!initialProgress) { return 0 }
       return -(ANIMATION_DURATION * 1.1)
@@ -824,8 +824,8 @@ return {
 
 function add_css$4 () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-3843873946-style';
-	style.textContent = "\n\n@keyframes svelte-3843873946-outer-rotate {\n  100% { transform: rotate(360deg); }\n}\n\n@keyframes svelte-3843873946-inner-rotate {\n  12.5% { transform: rotate(135deg); }\n  25%   { transform: rotate(270deg); }\n  37.5% { transform: rotate(405deg); }\n  50%   { transform: rotate(540deg); }\n  62.5% { transform: rotate(675deg); }\n  75%   { transform: rotate(810deg); }\n  87.5% { transform: rotate(945deg); }\n  100%  { transform: rotate(1080deg); }\n}\n\n[svelte-3843873946].spinner.animated, [svelte-3843873946] .spinner.animated {\n  animation: svelte-3843873946-outer-rotate 2.91667s linear infinite;\n}\n\n[svelte-3843873946].inner.animated, [svelte-3843873946] .inner.animated {\n  animation: svelte-3843873946-inner-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;\n}\n\n[svelte-3843873946].spinner, [svelte-3843873946] .spinner {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\n[svelte-3843873946].inner, [svelte-3843873946] .inner {\n  height: 100%;\n}\n\n";
+	style.id = 'svelte-2754252755-style';
+	style.textContent = "\n\n@keyframes svelte-2754252755-outer-rotate {\n  100% { transform: rotate(360deg); }\n}\n\n@keyframes svelte-2754252755-inner-rotate {\n  12.5% { transform: rotate(135deg); }\n  25%   { transform: rotate(270deg); }\n  37.5% { transform: rotate(405deg); }\n  50%   { transform: rotate(540deg); }\n  62.5% { transform: rotate(675deg); }\n  75%   { transform: rotate(810deg); }\n  87.5% { transform: rotate(945deg); }\n  100%  { transform: rotate(1080deg); }\n}\n\n[svelte-2754252755].spinner.animated, [svelte-2754252755] .spinner.animated {\n  animation: svelte-2754252755-outer-rotate 2.91667s linear infinite;\n}\n\n[svelte-2754252755].inner.animated, [svelte-2754252755] .inner.animated {\n  animation: svelte-2754252755-inner-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;\n}\n\n[svelte-2754252755].spinner, [svelte-2754252755] .spinner {\n  width: 100%;\n  height: 100%;\n  position: relative;\n}\n\n[svelte-2754252755].inner, [svelte-2754252755] .inner {\n  height: 100%;\n}\n\n";
 	appendNode( style, document.head );
 }
 
@@ -863,7 +863,7 @@ function create_main_fragment$4 ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-3843873946', '' );
+			setAttribute( div, 'svelte-2754252755', '' );
 			div.className = "spinner animated";
 			div.style.cssText = div_style_value = "animation-delay: " + ( state.animationOffset ) + "s;";
 			div_1.className = "inner animated";
@@ -931,7 +931,7 @@ function Spinner ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-3843873946-style' ) ) add_css$4();
+	if ( !document.getElementById( 'svelte-2754252755-style' ) ) add_css$4();
 
 	if ( !options._root ) {
 		this._oncreate = [];
@@ -1008,7 +1008,7 @@ return {
 
   computed: {
     spinning: progressRatio => progressRatio === undefined,
-    padding: (emphasized, size) => Math.floor(size * 0.2046) / (emphasized ? 1 : 1.7),
+    padding: (emphasized, size) => Math.round( (size * 0.2046) / (emphasized ? 1 : 1.7) ),
     spinnerSize: (size, padding, emphasized) => size - (padding * 2),
     arrowSyncRotate: (spinning, lastProgressRatio) => {
       const ratio = !spinning ? 0 : (lastProgressRatio || 0);
@@ -1024,8 +1024,8 @@ return {
 
 function add_css () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-1629388837-style';
-	style.textContent = "\n\n[svelte-1629388837].refresh-indicator, [svelte-1629388837] .refresh-indicator {\n  width: 44px;\n  height: 44px;\n  padding: 4px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n\n[svelte-1629388837].emphasized, [svelte-1629388837] .emphasized {\n  padding: 9px;\n  border-radius: 50%;\n  background-color: #fff;\n  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);\n}\n\n[svelte-1629388837].arrow-sync-container, [svelte-1629388837] .arrow-sync-container {\n  height: 100%;\n}\n\n";
+	style.id = 'svelte-3104553244-style';
+	style.textContent = "\n\n[svelte-3104553244].refresh-indicator, [svelte-3104553244] .refresh-indicator {\n  width: 44px;\n  height: 44px;\n  padding: 4px;\n  box-sizing: border-box;\n  overflow: hidden;\n}\n\n[svelte-3104553244].emphasized, [svelte-3104553244] .emphasized {\n  padding: 9px;\n  border-radius: 50%;\n  background-color: #fff;\n  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.3);\n}\n\n[svelte-3104553244].arrow-sync-container, [svelte-3104553244] .arrow-sync-container {\n  height: 100%;\n}\n\n";
 	appendNode( style, document.head );
 }
 
@@ -1048,7 +1048,7 @@ function create_main_fragment ( state, component ) {
 		},
 
 		hydrate: function ( nodes ) {
-			setAttribute( div, 'svelte-1629388837', '' );
+			setAttribute( div, 'svelte-3104553244', '' );
 			div.className = div_class_value = "refresh-indicator " + ( state.emphasized ? 'emphasized' : '' );
 			div.style.cssText = div_style_value = "height: " + ( state.size ) + "px; width: " + ( state.size ) + "px; padding: " + ( state.padding ) + "px;";
 		},
@@ -1194,7 +1194,7 @@ function Indicator ( options ) {
 	this._yield = options._yield;
 
 	this._torndown = false;
-	if ( !document.getElementById( 'svelte-1629388837-style' ) ) add_css();
+	if ( !document.getElementById( 'svelte-3104553244-style' ) ) add_css();
 
 	var oncreate = template.oncreate.bind( this );
 
