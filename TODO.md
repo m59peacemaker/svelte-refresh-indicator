@@ -1,2 +1,3 @@
 - The arrowhead maybe should transition out. It disappears harshly.
 - There's are various awkward things and code/value duplication throughout. That should be refactored.
+- This thing oughta be SVG rather than HTML/CSS
