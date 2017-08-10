@@ -1,6 +1,6 @@
 {
   "name": "svelte-refresh-indicator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Material design refresh indicator.",
   "main": "build/Indicator.cjs.js",
   "module": "build/Indicator.es.js",
