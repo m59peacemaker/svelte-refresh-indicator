@@ -425,13 +425,13 @@ return {
 }());
 
 function encapsulateStyles$1 ( node ) {
-	setAttribute( node, 'svelte-647709901', '' );
+	setAttribute( node, 'svelte-2409435514', '' );
 }
 
 function add_css$1 () {
 	var style = createElement( 'style' );
-	style.id = 'svelte-647709901-style';
-	style.textContent = "[svelte-647709901].arrow,[svelte-647709901] .arrow{position:relative;height:100%}[svelte-647709901].arrow-head-rotate,[svelte-647709901] .arrow-head-rotate{height:100%;width:100%}";
+	style.id = 'svelte-2409435514-style';
+	style.textContent = "[svelte-2409435514].arrow,[svelte-2409435514] .arrow{position:relative;height:100%}[svelte-2409435514].arrow-head-rotate,[svelte-2409435514] .arrow-head-rotate{height:100%;width:100%}";
 	appendNode( style, document.head );
 }
 
@@ -541,6 +541,7 @@ function create_if_block$1 ( state, component ) {
 	var arrowhead = new ArrowHead({
 		_root: component._root,
 		data: {
+			color: state.color,
 			size: state.size,
 			sizeRatio: (state.progressRatio - 0.3) / 0.7
 		}
@@ -570,6 +571,7 @@ function create_if_block$1 ( state, component ) {
 
 			var arrowhead_changes = {};
 
+			if ( 'color' in changed ) arrowhead_changes.color = state.color;
 			if ( 'size' in changed ) arrowhead_changes.size = state.size;
 			if ( 'progressRatio' in changed ) arrowhead_changes.sizeRatio = (state.progressRatio - 0.3) / 0.7;
 
@@ -601,7 +603,7 @@ function Arrow ( options ) {
 	this._root = options._root || this;
 	this._yield = options._yield;
 
-	if ( !document.getElementById( 'svelte-647709901-style' ) ) add_css$1();
+	if ( !document.getElementById( 'svelte-2409435514-style' ) ) add_css$1();
 
 	if ( !options._root ) {
 		this._oncreate = [];
