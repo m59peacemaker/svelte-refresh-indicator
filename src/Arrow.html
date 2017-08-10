@@ -13,7 +13,11 @@
   />
   {{#if progressRatio > 0.3 }}
     <div class="arrow-head-rotate" style="transform: rotate({{ rotate - 136 }}deg);">
-      <ArrowHead size="{{ size }}" sizeRatio="{{ (progressRatio - 0.3) / 0.7 }}"/>
+      <ArrowHead
+        color="{{ color }}"
+        size="{{ size }}"
+        sizeRatio="{{ (progressRatio - 0.3) / 0.7 }}"
+      />
     </div>
   {{/if}}
 </div>

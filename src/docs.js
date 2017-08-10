@@ -42,3 +42,12 @@ makeIndicator()
   }
   demoStep(indicator, 0, resetFn)
 }
+
+{
+  const indicator = makeIndicator({ size: 75, emphasized: true, color: '#800080' })
+  const resetFn = () => {
+    setTimeout(() => indicator.set({ progressRatio: undefined }), 100)
+    setTimeout(() => demoStep(indicator, 0, resetFn), 3300)
+  }
+  demoStep(indicator, 0, resetFn)
+}
