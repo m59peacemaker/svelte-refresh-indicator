@@ -4,10 +4,18 @@
 >
   {{#if spinning}}
     <div class="arrow-sync-container" style="transform: rotate({{ arrowSyncRotate }}deg);">
-      <Spinner size="{{ spinnerSize }}" initialProgress="{{ lastProgressRatio }}"/>
+      <Spinner
+        color="{{ color }}"
+        size="{{ spinnerSize }}"
+        initialProgress="{{ lastProgressRatio }}"
+      />
     </div>
   {{else}}
-    <Arrow size="{{ spinnerSize }}" progressRatio="{{ progressRatio }}"></Arrow>
+    <Arrow
+      color="{{ color }}"
+      size="{{ spinnerSize }}"
+      progressRatio="{{ progressRatio }}"
+    />
   {{/if}}
 </div>
 
@@ -19,6 +27,7 @@ export default {
   data () {
     return {
       size: 38,
+      color: '#2196f3',
       emphasized: false,
       progressRatio: undefined,
       lastProgressRatio: 0

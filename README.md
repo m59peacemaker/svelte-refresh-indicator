@@ -21,6 +21,7 @@ const indicator = new RefreshIndicator({
   target: somewhereOverTheDOMRainbow, // DOM node where the indicator will be rendered
   data: {
     size: 38, // the height and width of the indicator
+    color: '#2196f3', // spinner/arrow color
     emphasized: false // false => plain spinner, true => spinner in a fancy container
   }
 })
